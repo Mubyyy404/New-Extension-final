@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebGuard | Threat Blocked</title>
+  <style>
+    :root {
+      --bg-color: #0f1115;
+      --card-bg: #1c1f26;
+      --accent-red: #ff4b4b;
+      --text-main: #ffffff;
+      --text-muted: #a0a6b5;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: radial-gradient(#2a2e38 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .box {
+      background-color: var(--card-bg);
+      border: 1px solid #333;
+      width: 90%;
+      max-width: 550px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      border-top: 4px solid var(--accent-red);
+    }
+
+    /* Shield Icon */
+    .icon-wrapper svg {
+      width: 64px;
+      height: 64px;
+      fill: var(--accent-red);
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { drop-shadow(0 0 0 rgba(255, 75, 75, 0.4)); }
+      70% { drop-shadow(0 0 15px rgba(255, 75, 75, 0)); }
+      100% { drop-shadow(0 0 0 rgba(255, 75, 75, 0)); }
+    }
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    /* Technical Report Area */
+    .tech-details {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 30px;
+      text-align: left;
+      border-left: 3px solid var(--accent-red);
+    }
+
+    .tech-line {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .tech-label { color: var(--text-muted); }
+    .tech-val { color: #fff; font-weight: bold; }
+    .danger { color: var(--accent-red); }
+
+    /* Button */
+    button {
+      background-color: var(--accent-red);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff3333;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <div class="icon-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.2v3.5c0 .6-.6 1.2-1.2 1.2H9.2c-.6 0-1.2-.6-1.2-1.2v-3.5c0-.6.6-1.2 1.2-1.2V9.5C9.2 8.1 10.6 7 12 7zm0 1c-.8 0-1.5.7-1.5 1.5V11h3V9.5c0-.8-.7-1.5-1.5-1.5z"/></svg>
+    </div>
+
+    <h1>Website Blocked</h1>
+    <p>This site was flagged by WebGuard as dangerous. Access has been restricted to protect your device.</p>
+
+    <div class="tech-details">
+      <div class="tech-line">
+        <span class="tech-label">Status:</span>
+        <span class="tech-val danger">MALICIOUS_CONTENT</span>
+      </div>
+      <div class="tech-line">
+        <span class="tech-label">Reason:</span>
+        <span id="reason" class="tech-val">Phishing / Fraud</span>
+      </div>
+      <div class="tech-line">
+        <span class="tech-label">Action:</span>
+        <span class="tech-val">Connection Reset</span>
+      </div>
+    </div>
+
+    <button id="back">Back to Safety</button>
+
+    <div class="footer">
+      WebGuard Security Protocol v2.0
+    </div>
+  </div>
+
+  <script src="blocked.js"></script>
+</body>
+</html>
